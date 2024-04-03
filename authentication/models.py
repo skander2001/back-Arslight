@@ -84,7 +84,6 @@ class Student(models.Model):
     student = models.OneToOneField(User, on_delete=models.CASCADE)
     child_first_name = models.CharField(max_length=120)
     child_last_name = models.CharField(max_length=120)
-    child_username = models.CharField(max_length=120)
     level = models.CharField(max_length=25, choices=LEVEL, null=True)
 
     objects = StudentManager()
@@ -152,3 +151,5 @@ class Orthophoniste(models.Model):
 
     def __str__(self):
         return "{}".format(self.user)
+
+

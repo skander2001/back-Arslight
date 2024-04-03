@@ -82,7 +82,18 @@ class UserLoginView(ObtainAuthToken):
                 role = "Parent"
             elif user.is_teacher:
                 role = "Teacher"
+            elif user.is_orthophoniste:
+                role = "Ortophoniste"
 
             return Response({'token': token.key, 'username': user.username, 'email': user.email, 'role': role})
         else:
             return Response({'message': 'Invalid username or password'}, status=status.HTTP_401_UNAUTHORIZED)
+
+class UserLogoutView(APIView):
+    permission_classes = [IsAuthenticated]
+    def post(self, request):
+        print(request.headers)
+        token_key = request.auth.key
+        token = Token.objects.get(key=token_key)
+        token.delete()
+        return Response({'detail': 'Successfully logged out.'})
