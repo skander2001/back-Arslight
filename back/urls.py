@@ -1,5 +1,6 @@
 from django.urls import path, include
-from authentication.views import StudentRegistrationView, UserLoginView,ParentRegistrationView,TeacherRegistrationView,OrthoRegistrationView
+from authentication.views import StudentRegistrationView, UserLoginView, ParentRegistrationView, \
+    TeacherRegistrationView, OrthoRegistrationView, UserLogoutView
 from django.contrib import admin
 
 from course.views import CourseListCreateAPIView, CourseRetrieveUpdateDestroyAPIView, ReviewListCreateAPIView, \
@@ -12,6 +13,7 @@ urlpatterns = [
     path('api/teacher/register/', TeacherRegistrationView.as_view(), name='Teacher-registration'),
     path('api/ortho/register/', OrthoRegistrationView.as_view(), name='Ortho-registration'),
     path('api/auth/login/', UserLoginView.as_view(), name='user-login'),
+    path('api/auth/logout/',UserLogoutView.as_view(),name='user-logout'),
     path('api/courses/', CourseListCreateAPIView.as_view(), name='course-list'),
     path('api/courses/<int:pk>/', CourseRetrieveUpdateDestroyAPIView.as_view(), name='course-detail'),
     path('api/reviews/', ReviewListCreateAPIView.as_view(), name='review-list'),

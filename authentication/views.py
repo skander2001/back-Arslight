@@ -85,7 +85,7 @@ class UserLoginView(ObtainAuthToken):
             elif user.is_orthophoniste:
                 role = "Ortophoniste"
 
-            return Response({'token': token.key, 'username': user.username, 'email': user.email, 'role': role})
+            return Response({'token': token.key ,'id': user.id ,'username': user.username, 'email': user.email, 'role': role})
         else:
             return Response({'message': 'Invalid username or password'}, status=status.HTTP_401_UNAUTHORIZED)
 

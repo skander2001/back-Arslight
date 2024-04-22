@@ -1,5 +1,5 @@
 from django.db import models
-from authentication.models import Teacher, Student
+from authentication.models import Teacher, Student,User
 from django.utils import timezone
 from django.db.models import Q
 
@@ -24,7 +24,7 @@ class Course(models.Model):
     title = models.CharField(max_length=255)
     summary = models.TextField(max_length=200, blank=True, null=True)
     level = models.CharField(max_length=100)
-    teacher = models.ForeignKey(Teacher, on_delete=models.CASCADE)
+    teacher = models.ForeignKey(User, on_delete=models.CASCADE)
     file = models.FileField(upload_to='course_files/')
     created_at = models.DateTimeField(default=timezone.now)
 
