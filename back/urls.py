@@ -5,6 +5,7 @@ from django.contrib import admin
 
 from course.views import CourseListCreateAPIView, CourseRetrieveUpdateDestroyAPIView, ReviewListCreateAPIView, \
     ReviewRetrieveUpdateDestroyAPIView
+from writting.views import  predictFr,predictDigits
 
 urlpatterns = [
     path('admin/', admin.site.urls),
@@ -17,4 +18,7 @@ urlpatterns = [
     path('api/courses/', CourseListCreateAPIView.as_view(), name='course-list'),
     path('api/courses/<int:pk>/', CourseRetrieveUpdateDestroyAPIView.as_view(), name='course-detail'),
     path('api/reviews/', ReviewListCreateAPIView.as_view(), name='review-list'),
-    path('api/reviews/<int:pk>/', ReviewRetrieveUpdateDestroyAPIView.as_view(), name='review-detail'),]
+    path('api/reviews/<int:pk>/', ReviewRetrieveUpdateDestroyAPIView.as_view(), name='review-detail'),
+    path('api/pred',predictFr.as_view(),name='pred'),
+    path('api/predD',predictDigits.as_view(),name='predD')
+]
