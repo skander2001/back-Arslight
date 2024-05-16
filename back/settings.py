@@ -42,7 +42,10 @@ INSTALLED_APPS = [
     'rest_framework.authtoken',
     'authentication',
     'course',
-    'tts'
+    'tts',
+    'writting',
+    'reading',
+    'tti'
 ]
 
 MIDDLEWARE = [
